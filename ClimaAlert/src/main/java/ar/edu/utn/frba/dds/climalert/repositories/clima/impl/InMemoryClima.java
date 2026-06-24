@@ -11,16 +11,18 @@ import java.util.Optional;
 @Repository
 public class InMemoryClima implements IClimaRepository {
 
-  private List<Clima> climasHistoricos = new ArrayList<>()
+  private List<Clima> climasHistoricos = new ArrayList<>();
   @Override
   public void guardar(Clima clima) {
-    this.climasHistoricos.add(clima);
+    this.climasHistoricos.add(clima); System.out.println(this.climasHistoricos);
   }
 
+  @Override
   public List<Clima> obtenerTodos(){
     return this.climasHistoricos;
   }
 
+  @Override
   public Optional<Clima> obtenerUltimo(){
     if(this.climasHistoricos.isEmpty()){
       return Optional.empty();

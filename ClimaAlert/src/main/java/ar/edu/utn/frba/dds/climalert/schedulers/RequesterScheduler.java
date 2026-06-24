@@ -11,17 +11,21 @@ public class RequesterScheduler {
 
   private final IWheaterApiService wheatherApi;
 
-  private final IClimaService climaService
+  private final IClimaService climaService;
 
   public RequesterScheduler(IWheaterApiService wheatherApi, IClimaService climaService){
     this.wheatherApi = wheatherApi;
     this.climaService = climaService;
   }
 
-  @Scheduled
+  @Scheduled(fixedRate = 30000)
   void pedirClima(){
-    WheaterApiResponse respuesta = this.wheatherApi.pedirClima();
-    this.climaService.guardarNuevoClima(respuesta);
+    try{
+      WheaterApiResponse respuesta = this.wheatherApi.pedirClima();
+      this.climaService.guardarNuevoClima(respuesta);
+    } catch (Exception e) {
+      System.out.println("fallo la peticion a weather api: " + e.getMessage());
+    }
   }
 
 }

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record CurrentDto(
-    String name,
-    String region,
-    String country,
-    String localtime
+    Double temp_c,
+    Integer humidity,
+    String last_updated,
+    ConditionDto condition
 ) {
 }
