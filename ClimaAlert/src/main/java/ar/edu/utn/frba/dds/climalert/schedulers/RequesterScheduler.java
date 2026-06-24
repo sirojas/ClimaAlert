@@ -18,7 +18,7 @@ public class RequesterScheduler {
     this.climaService = climaService;
   }
 
-  @Scheduled(fixedRate = 30000)
+  @Scheduled(fixedRate = 300000)
   void pedirClima(){
     try{
       WheaterApiResponse respuesta = this.wheatherApi.pedirClima();
